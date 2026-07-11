@@ -1,0 +1,8 @@
+output "storage_account_name"       { value = azurerm_storage_account.this.name }
+output "storage_account_id"         { value = azurerm_storage_account.this.id }
+output "primary_connection_string" {
+  value     = azurerm_storage_account.this.primary_connection_string
+  sensitive = true
+}
+output "container_names" { value = [for c in azurerm_storage_container.this : c.name] }
+output "share_names"     { value = [for s in azurerm_storage_share.this : s.name] }
