@@ -5,7 +5,7 @@
 .terraform.lock.hcl
 
 # Secret values — NEVER commit
-terraform.tfvars
+#terraform.tfvars
 *.tfvars
 !*.tfvars.example       # example files are safe to commit
 !environments/**/*.tfvars  # environment overrides can be committed (no secrets)
