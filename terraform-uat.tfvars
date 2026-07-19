@@ -3,23 +3,22 @@
 # Copy to terraform.tfvars and fill in your values.
 # NEVER commit terraform.tfvars to git (it is in .gitignore).
 # ─────────────────────────────────────────────────────────────────────────────
-
-location    = "Central US"      # closest free-tier region to you
-environment = "dev"
+location    = "East US"      # closest free-tier region to you
+environment = "uat"
 project     = "sott"
 
 # ── VNet ─────────────────────────────────────────────────────────────────────
-vnet_address_space = ["10.0.0.0/16"]
+vnet_address_space = ["50.0.0.0/16"]
 subnets = {
-  web   = "10.0.1.0/24"
-  app   = "10.0.2.0/24"
-  data  = "10.0.3.0/24"
-  appgw = "10.0.4.0/24"
+  web   = "50.0.1.0/24"
+  app   = "50.0.2.0/24"
+  data  = "50.0.3.0/24"
+  appgw = "50.0.4.0/24"
 }
 
 # ── VMs ───────────────────────────────────────────────────────────────────────
 vm_count         = 2
-vm_size          = "Standard_A2_v2"   
+vm_size          = "Standard_B1s"   # free account: 750 hrs/month
 vm_admin_username = "azureadmin"
 
 # ── Storage ───────────────────────────────────────────────────────────────────
@@ -43,5 +42,5 @@ apim_publisher_email = "your@email.com"
 common_tags = {
   project    = "sott-azure-training"
   managed_by = "terraform"
-  owner      = "bharath"
+  owner      = "dhinesh"
 }

@@ -26,14 +26,14 @@ module "network" {
 # # WEEK 2 │ MODULE: LOAD BALANCER
 # # Standard public LB fronting backend VMs
 # # ─────────────────────────────────────────────────────────────────────────────
-# module "loadbalancer" {
-#   source = "./modules/loadbalancer"
+  module "loadbalancer" {
+  source = "./modules/loadbalancer"
 
-#   resource_group_name = azurerm_resource_group.main.name
-#   location            = var.location
-#   prefix              = local.prefix
-#   tags                = local.tags
-# }
+  resource_group_name = azurerm_resource_group.main.name
+  location            = var.location
+  prefix              = local.prefix
+  tags                = local.tags
+}
 
 # # ─────────────────────────────────────────────────────────────────────────────
 # # WEEK 3 │ MODULE: APP GATEWAY
@@ -53,34 +53,34 @@ module "network" {
 # # WEEK 3 │ MODULE: VIRTUAL MACHINE
 # # Linux VMs using for_each; joined to LB backend pool
 # # ─────────────────────────────────────────────────────────────────────────────
-# module "virtualmachine" {
-#   source = "./modules/virtualmachine"
+module "virtualmachine" {
+  source = "./modules/virtualmachine"
 
-#   resource_group_name      = azurerm_resource_group.main.name
-#   location                 = var.location
-#   prefix                   = local.prefix
-#   subnet_id                = local.subnet_ids["web"]
-#   vm_count                 = var.vm_count
-#   vm_size                  = var.vm_size
-#   admin_username           = var.vm_admin_username
-#   lb_backend_pool_id       = module.loadbalancer.backend_pool_id
-#   tags                     = local.tags
-# }
+  resource_group_name      = azurerm_resource_group.main.name
+  location                 = var.location
+  prefix                   = local.prefix
+  subnet_id                = local.subnet_ids["web"]
+  vm_count                 = var.vm_count
+  vm_size                  = var.vm_size
+  admin_username           = var.vm_admin_username
+  lb_backend_pool_id       = module.loadbalancer.backend_pool_id
+  tags                     = local.tags
+}
 
 # # ─────────────────────────────────────────────────────────────────────────────
 # # WEEK 4 │ MODULE: STORAGE
 # # Storage account + containers + file shares
 # # ─────────────────────────────────────────────────────────────────────────────
-# module "storage" {
-#   source = "./modules/storage"
+module "storage" {
+  source = "./modules/storage"
 
-#   resource_group_name = azurerm_resource_group.main.name
-#   location            = var.location
-#   prefix              = local.prefix
-#   containers          = var.storage_containers
-#   shares              = var.storage_shares
-#   tags                = local.tags
-# }
+  resource_group_name = azurerm_resource_group.main.name
+  location            = var.location
+  prefix              = local.prefix
+  containers          = var.storage_containers
+  shares              = var.storage_shares
+  tags                = local.tags
+}
 
 # # ─────────────────────────────────────────────────────────────────────────────
 # # WEEK 4 │ MODULE: SQL

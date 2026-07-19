@@ -5,17 +5,17 @@
 variable "location" {
   description = "Azure region for all resources"
   type        = string
-  default     = "East US"
+  default     = "centralus"
 }
 
 variable "environment" {
-  description = "Deployment environment (dev | prod)"
+  description = "Deployment environment (dev | prod | uat)"
   type        = string
   default     = "dev"
 
   validation {
-    condition     = contains(["dev", "prod"], var.environment)
-    error_message = "environment must be 'dev' or 'prod'."
+    condition     = contains(["dev", "prod", "uat"], var.environment)
+    error_message = "environment must be 'dev' or 'prod' or 'uat'."
   }
 }
 
@@ -45,38 +45,38 @@ variable "subnets" {
 }
 
 # # ── Virtual Machine ───────────────────────────────────────────────────────────
-# variable "vm_admin_username" {
-#   description = "Admin username for Linux VMs"
-#   type        = string
-#   default     = "azureadmin"
-# }
+variable "vm_admin_username" {
+  description = "Admin username for Linux VMs"
+  type        = string
+  default     = "azureadmin"
+}
 
-# variable "vm_size" {
-#   description = "VM size (free account: Standard_B1s)"
-#   type        = string
-#   default     = "Standard_B1s"
-# }
+variable "vm_size" {
+  description = "VM size (free account: Standard_B1s)"
+  type        = string
+  default     = "Standard_A1_v2"
+}
 
-# variable "vm_count" {
-#   description = "Number of backend VMs to deploy"
-#   type        = number
-#   default     = 2
-# }
+variable "vm_count" {
+  description = "Number of backend VMs to deploy"
+  type        = number
+  default     = 2
+}
 
 # # ── Storage ───────────────────────────────────────────────────────────────────
-# variable "storage_containers" {
-#   description = "List of blob container names to create"
-#   type        = list(string)
-#   default     = ["app-data", "logs"]
-# }
+variable "storage_containers" {
+  description = "List of blob container names to create"
+  type        = list(string)
+  default     = ["app-data", "logs"]
+}
 
-# variable "storage_shares" {
-#   description = "Map of file share name -> quota_gb"
-#   type        = map(number)
-#   default = {
-#     "shared-config" = 5
-#   }
-# }
+variable "storage_shares" {
+  description = "Map of file share name -> quota_gb"
+  type        = map(number)
+  default = {
+    "shared-config" = 5
+  }
+}
 
 # # ── SQL ───────────────────────────────────────────────────────────────────────
 # variable "sql_admin_username" {

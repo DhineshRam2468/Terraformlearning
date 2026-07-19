@@ -290,6 +290,7 @@ curl "$(terraform output -raw apim_gateway_url)/echo/anything" -v
 # Multi-environment demo:
 terraform plan -var-file=environments/dev/dev.tfvars
 terraform plan -var-file=environments/prod/prod.tfvars
+terraform plan -var-file=environments/uat/uat.tfvars
 # Compare the plans — see VM size and SQL SKU differ
 ```
 
